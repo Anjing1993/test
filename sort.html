@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sort问题</title>
+</head>
+<body>
+	<script>
+		var arr=[{
+					  name:'张三',
+					  yw: 4,
+					  sx: 5
+				
+					},{
+					  name:'李四',
+					  yw: 4,
+					  sx: 5
+				
+					},{
+					  name:'王五',
+					  yw: 6,
+					  sx: 6
+					
+					},{
+					  name:'赵六',
+					  yw: 4,
+					  sx: 6
+					
+					},{
+					  name:'马七',
+					  yw: 5,
+					  sx: 4
+					  
+					}];
+		console.log(arr.sort(function(a,b){
+			return b.sx-a.sx;
+		}).sort(function(a,b){
+			return b.yw-a.yw;
+		}).sort(function(a,b){
+			return (b.sx+b.yw)-(a.sx+a.yw);
+		}));
+		// //课程名按优先级从低到高存入数组
+		// var sortClassName=['yw','sx','yy'];
+		// function com(a,b){
+		// 	return b-a;
+		// }
+		// function sum(a,b){
+		// 	var sumA = 0, sumB = 0;
+		// 	for(var i=0;i<sortClassName.length;i++){
+		// 		  if(typeof a[sortClassName[i]]!=='undefined'){
+		// 		  	sumA+=a[sortClassName[i]];
+		// 		  	sumB+=b[sortClassName[i]];
+		// 		  }
+		// 		}
+		// 		  var j=0;
+		// 		  var result=com(sumA,sumB);
+		// 		  if(result!==0){ return result;   }
+		// 		  do{
+		// 		  	result = com(a[sortClassName[j]], b[sortClassName[j]]);
+		// 		  	j++;
+		// 		  }while(j<sortClassName.length&&result)
+  //                 return result;
+		// 	}
+		
+		// console.log(arr.sort(sum));
+	</script>
+</body>
+</html>

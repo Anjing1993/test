@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test1</title>
+</head>
+<body>
+	<script>
+		var name = '哈哈';
+		var obj = {
+			name: '王英',
+			child: {
+				name: '嘿嘿',
+				getName: function(){
+					return this.name;
+				}
+			}
+		};
+		/*方法一*/
+		console.log(obj.child.getName.call());
+		console.log(obj.child.getName.call(window));
+		console.log(obj.child.getName.call(obj.child));
+		console.log(obj.child.getName.call(obj));
+		/*方法二*/
+		console.log(obj.child.getName.apply(window));
+		console.log(obj.child.getName.apply(obj.child));
+		console.log(obj.child.getName.apply(obj));
+		/*方法三*/
+		var windowName = obj.child.getName.bind(window);
+		var objName = obj.child.getName.bind(obj);
+		console.log(windowName());
+		console.log(objName());
+		console.log(obj.child.getName());
+
+		//call方法: 
+		//语法：call([thisObj[,arg1[, arg2[,   [,.argN]]]]]) 
+		//定义：调用一个对象的一个方法，以另一个对象替换当前对象。 
+		//说明： 
+		//call 方法可以用来代替另一个对象调用一个方法。call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。 
+		//如果没有提供 thisObj 参数，那么 Global 对象被用作 thisObj。
+
+		//apply方法： 
+		//语法：apply([thisObj[,argArray]]) 
+		//定义：应用某一对象的一个方法，用另一个对象替换当前对象。 
+		//说明： 
+		//如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。 
+		//如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。
+
+		//两者的区别只是传参不同
+
+		//bind方法:
+		//会创建一个新函数,称为绑定函数.当调用这个绑定函数时,绑定函数会以创建它时传入bind方法的第一个参数作为this,传入bind方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数.
+
+
+	</script>
+</body>
+</html>

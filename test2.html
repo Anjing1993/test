@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test2</title>
+</head>
+<body>
+	<script>
+		var indexArray = [{
+			index: 1
+		},{
+			index: 2
+		},{
+			index: 3
+		},{
+			index: 4
+		},{
+			index: 5
+		},{
+			index: 6
+		},{
+			index: 21
+		},{
+			index: 43
+		},{
+			index: 100
+		},{
+			index: 87
+		},{
+			index: 100
+		}
+		];
+
+		//此时为顺序
+		// console.log(indexArray);	
+
+		//此时为乱序---这种方法效率不是很高
+		// indexArray.sort(function(){return Math.random() > 0.5 ? -1 : 1;});
+		// console.log(indexArray);	
+
+		//此时为乱序
+		if (!Array.prototype.shuffle) {
+		    Array.prototype.shuffle = function() {
+		        for(var j, x, i = this.length; i; j = parseInt(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);
+		        return this;
+		    };
+		}
+		indexArray.shuffle();
+		console.log(indexArray);
+
+		//此时为倒序
+		// indexArray.sort(function(){return Math.random() > 0.5 ? -1 : 1;});
+		// indexArray.sort(function(obj1,obj2){return obj2.index - obj1.index});
+		// console.log(indexArray);
+
+		//最大值 
+		//indexArray.sort(function(){return Math.random() > 0.5 ? -1 : 1;});
+		//console.log(indexArray);
+        //var i = 0;  
+        //for(var x = 0; x < indexArray.length; x++){  
+	    //    if(indexArray[i].index < indexArray[x].index){  
+	    //        i = x;  
+	    //    }     
+        //} 
+        //console.log("索引为" + i + "中的" + indexArray[i].index + "最大");	
+
+        //第三大值
+        //找第N大值问题可以先对数组进行排序，再找出对应的第N大值
+	</script>
+</body>
+</html>

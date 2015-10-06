@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mytest</title>
+</head>
+<body>
+	<script>
+//第一题：
+	var arr=[{
+					  name:'张三',
+					  yw: 4,
+					  sx: 5
+					},{
+					  name:'李四',
+					  yw: 5,
+					  sx: 5
+					},{
+					  name:'王五',
+					  yw: 6,
+					  sx: 6
+					},{
+					  name:'赵六',
+					  yw: 4,
+					  sx: 6
+					},{
+					  name:'马七',
+					  yw: 5,
+					  sx: 4
+					}];
+//      console.log(arr.sort(function(a,b){
+//     if(a.yw + a.sx < b.yw+b.sx){
+//       return -1;
+//     } else if(a.yw + a.sx === b.yw+b.sx){
+//       if( a.sx < b.sx){
+//         return -1
+//       } else{
+//         return 1;
+//       }
+//     } else if(a.yw + a.sx > b.yw+b.sx){
+//       return 1
+//     }
+    
+// }))
+function compare(a,b){
+  return a - b;
+}
+//这个是优先级
+var sortOrder = ['yw','sx','hx','sw'];
+console.log(arr.sort(function(a,b){
+    var sumA = 0, sumB = 0;
+    for(var i = 0; i < sortOrder.length; i++) {
+      //console.log(a[sortOrder[i]])
+      if (typeof a[sortOrder[i]] !== 'undefined' ){
+        sumA += a[sortOrder[i]];
+        sumB += b[sortOrder[i]];
+      }
+      
+    }
+    
+    var j = 0;
+    var result = compare(sumA,sumB);
+    if(result !== 0 ){
+      return result;
+    }
+    do{
+      result = compare(a[sortOrder[j]], b[sortOrder[j]]);
+      j++;
+      //0表示分数一样，继续下一个优先级
+    }while(j < sortOrder.length && result )
+    return result;
+}));
+ 
+//第二题：
+//data.html内容:i'm test data
+//demo.html
+// var get2 = function(url){
+//         return function(callback){
+//             $.get(url,callback);
+//         }
+//     }
+//     get2("./data.html")(function(data){
+//         console.log(data);
+//     })
+// 问题三：实现一个简单的模板引擎
+// var tpl = "My name is {name},i'm {age} years old";
+// var data = {
+// 	'name':"xiaomi",
+// 	"age":5
+// }
+// function tpl2str(str,data){
+// 	return str.replace(/\{([a-zA-Z0-9]+)\}/g,function(s0,s1){
+// 			return data[s1];
+// 		});
+	
+// 	}
+// console.log(tpl2str(tpl,data))
+
+// function tpl2str(str,data){
+// 	var resultArr = reg.exec(str);
+// 	console.log(resultArr);
+// 	while(resultArr&&resultArr.length>1){
+// 		str = str.replace(reg,data[resultArr[1]]);//替换
+// 		resultArr = reg.exec(str);
+		
+// 	}
+// 	return str;
+// }
+
+// 问题四：统计一句话中一个单词出现的次数
+// var s = 'the quick brown prototype fox jumps over valueOf hasOwnProperty prototype';
+// //法一：
+// //存在的问题：单词中可能会出现对象原型上默认的方法，hasOwnProperty等,这时会将方法和出现的次数当做字符串连接在一起，从而统计出错
+// var result={};
+// s.split(' ').forEach(function(item){
+//    if(typeof result[item]==='undefined'){
+//        result[item] = 1;
+//    }else{
+//        result[item] += 1;
+//    }
+// });
+//    console.log(result);
+
+// // 法二：
+// //（1）存数据的时候比如单词是valueOf  就按照result["_valueOf"]去存，让它不再是默认变量，然后最后输出的时候，又把_删去
+// var result={};
+// s.split(' ').forEach(function(item){
+//    var index='_'+item;
+//    if(typeof result[index]==='undefined'){
+//        result[index] = 1;
+//    }else{
+//        result[index] += 1;
+//    }
+// });
+//    var reStr='';
+//    for(var index in result){
+//        var item = index.slice(1);
+//        reStr = reStr +' '+item+':'+result[index];
+//    }
+//    console.log(reStr);
+
+// //法三：由于前面的那些方法是存在对象原型上的，那我们可以创建一个没有原型的对象
+// //问题：如果没有es5呢，原生实现Object.create
+// if (typeof Object.create !== 'function') {
+//   Object.create = function (o) {
+//     if (arguments.length !== 1) {
+//       throw new Error('Object.crete polyfill only accept one parameter');
+//     }
+//     function F() {}
+//     F.prototype = o;
+//     return new F();
+//   };
+// }
+// var result = {};
+// //创建没有原型的对象
+// //result.__proto__ = null;//可能会有兼容性
+// result = Object.create(null);
+// s.split(' ').forEach(function(item){
+// 	if(typeof result[item]==='undefined'){
+//          result[item] = 1;
+// 	}else{
+//          result[item] += 1;
+// 	}
+// });
+// console.log(result);
+
+</script>
+</body>
+</html>

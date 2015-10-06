@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this问题</title>
+</head>
+<body>
+	<script>
+	
+	// 规则0：函数本身是一个特殊类型，大多数时候，可以认为是一个变量。 
+	// function a(){console.log(this)};
+	// a();
+
+	// var a = function(){console.log(this)}
+	// a();
+	// 都可以认为是创建了一个变量，这个变量的值就是一个函数。 
+
+
+	// 规则1：如果一个函数，是某个对象的key 值，那么，this就指向这个对象。
+	// var a = function(obj) 
+	// { 
+	// 	console.log(this == obj); 
+	// } 
+	// var o = {}; 
+	// o.afun = a; 
+	// o.afun(o); 
+	// 函数就是一个变量，但是可以绑定到某个对象的下面，并且 this 就会指向 o 对象。 
+	// 这里必须要注意，没有被绑定的对象，默认this 指向window 对象。 
+
+	// function a(){ 
+	// 	console.log(this == window) 
+	// 	function b(){ 
+	// 		console.log(this == window)  
+	// 	} 
+	// 	b();
+	// }
+	// a();
+	// 还必须注意的是，绑定没有传递性，比如上面的嵌套的函数，a绑定到 o 对象，那么就影响了a函数，而b 还是指向到window。
+
+
+	// 规则2：如果函数new 了一下，那么就会创建一个对象，并且this 指向 新创建的对象。
+	// function a(){ 
+	// 	console.log(this) 
+	// }
+	// var o = new a(); 
+	// 这个时候，o 不再是个函数，而实际上，可以认为是这样的一个过程。 
+	// 创建一个对象 var o = {}; 
+	// 然后，把this 指向 o，通过this 把 o 给初始化了。
+
+
+	// 规则3：通过apply,call,bind 可以改变this 的指向 
+	// var a = function (obj) 
+	// { 
+	// 	console.log(this == obj); 
+	// };
+	// var obj = {}; 
+	// obj.fun = a; 
+	// obj.fun(obj);
+	// a.apply(obj, [obj]);
+	// a.call(obj,obj);
+
+	
+	// javascript 的this 可以简单的认为是 后期绑定，没有地方绑定的时候，默认绑定window。
+
+
+	// 	caller
+	// caller返回一个函数的引用，这个函数调用了当前的函数。
+	// 使用这个属性要注意:
+	// 1 这个属性只有当函数在执行时才有用
+	// 2 如果在javascript程序中，函数是由顶层调用的，则返回null
+	// functionName.caller: functionName是当前正在执行的函数
+	// var a = function() {   
+	// 	console.log(a.caller);   
+	// }   
+	// var b = function() {   
+	// 	a();   
+	// }   
+	// b();  
+	//上面的代码中，b调用了a，那么a.caller返回的是b的引用
+	// a();
+	//如果直接调用a(即a在任何函数中被调用，也就是顶层调用)
+
+
+	//callee
+	// callee放回正在执行的函数本身的引用，它是arguments的一个属性
+	// 使用callee时要注意:
+	// 1 这个属性只有在函数执行时才有效
+	// 2 它有一个length属性，可以用来获得形参的个数，因此可以用来比较形参和实参个数是否一致，即比较arguments.length是否等于arguments.callee.length
+	// 3 它可以用来递归匿名函数。
+	var a = function() {   
+		console.log(arguments.callee);   
+	}   
+	var b = function() {   
+		a();   
+	}   
+	b(); 
+	a();
+	//a在b中被调用，但是它返回了a本身的引用
+	</script>
+</body>
+</html>

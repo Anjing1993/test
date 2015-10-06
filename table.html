@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overview</title>
+    <meta charset="utf-8"/>
+    <link href="" rel="stylesheet">
+    <script type="text/javascript">    
+     function flattenObject(target){
+		var newObj = {};
+		convert(target,newObj);
+		console.log(newObj);
+		return newObj;
+}
+	function convert(target,newObj,ns){
+		var value;
+		for (var name in target) {
+			if(target.hasOwnProperty(name)){
+				value = target[name];
+				var newNS = ns ? ns + "." + name : name;
+				if(value && typeof value === "object"){
+					convert(value,newObj,newNS);
+				}
+				else {
+					newObj[newNS] = value;
+				}
+			}
+		};
+	}
+
+
+	var obj={
+         name:{
+         	first:'wang',
+         	last:'shijun'
+         },
+         gender:'male',
+         age:25,
+         	birth:{
+         		year:1978,
+         		month:10,
+         		day:24,
+         		time:{
+         			hour:11,
+         			minute:30
+         		}
+         	}
+         }
+	console.log(flattenObject(obj))
+    </script>
+</head>
+<body>
+	<table border="1" cellspacing="0">
+		<thead>
+			<tr>
+				<th>哈哈哈1</th>
+				<th>哈哈哈2</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="2">嘿嘿1</td>
+				<td>嘿嘿2</td>
+			</tr>
+			<tr>
+				
+				<td>嘿嘿2</td>
+			</tr>
+			<tr >
+				<td colspan="2">嘿嘿3</td>
+				
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

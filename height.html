@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+  body
+  {
+  	margin: 0;
+  	padding: 0;
+  }
+	
+	  #parent
+	   {
+              margin:0 auto;
+              width: 500px;
+              border: 1px solid #f00;
+              overflow: hidden;
+*/
+	   }
+	   #left
+	   {
+         float: left;
+         width: 150px;
+         border: 1px solid #0f0;
+         padding-bottom: 100px;
+         margin-bottom: -100px;
+        background: #b0b0b0;
+	   }
+	   #right
+	    {
+             float:right;
+             width: 250px;
+               border: 1px solid #00f;
+               background: #6cc;
+               padding-bottom: 100px;
+               margin-bottom: -100px;
+
+	    }
+
+</style>
+</head>
+<body onclick="function (){ alert(4);}">
+    <div id="parent">
+    	<div id="left" onclick="function (){alert(1);}">
+    		实习的时候在老大那里偶然看到了前端的面试题，于是顺手拿过来做了一做。发现题目也不是很难，于是做完了便沾沾自喜的看别人的简历。实习的时候在老大那里偶然看到了前端的面试题，于是顺手拿过来做了一做。发现题目也不是很难，于是做完了便沾沾自喜的看别人的简历。
+    	</div>
+      <div id="right">
+      然后他问，那怎么等高呢？我当时就混乱了，原来这题是在考浮动等高！我从来没有碰到过这样的布局，在最近的一个项目中我也是通过父元素加背景模拟两边等高，至于如何做到真正的两栏并列等高，我还不知道。于是他跟我说让我去网上搜一搜。这样的布局非常经典，一下就搜出来了：
+
+      </div>
+
+    </div> <div style="width:100px;height:100px;background:red;"></div>
+</body>
+</html>
