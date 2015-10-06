@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overview</title>
+    <meta charset="utf-8"/>
+    <link href="" rel="stylesheet">
+    <style type="text/css">
+     html{font-size: 12px;}
+     div{width:200px;height:100px;background: pink;vertical-align: middle;}
+    </style>
+    <script type="text/javascript">
+       var obj={
+         name:{
+         	first:'wang',
+         	last:'shijun'
+         },
+         gender:'male',
+         age:25,
+         	birth:{
+         		year:1978,
+         		month:10,
+         		day:24,
+         		time:{
+         			hour:11,
+         			minute:30
+         		}
+         	}
+         }
+function flattenObject(obj){
+   var result={
+   	'name.first':obj.name.first,
+   	'name.last':obj.name.last,
+   	'brith.time.hour':obj.birth.time.hour
+   }
+   return result;
+  }
+
+console.log(flattenObject(obj));
+    </script>
+</head>
+<body>
+<div>
+	vertical-align 属性设置元素的垂直对齐方式。 说明 该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐。允许指定负长度值和百分比值。这会使元素降低而不...
+</div>
+</body>
+</html>

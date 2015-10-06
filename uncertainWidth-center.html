@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+  /**法一**/
+ table{
+   margin:0 auto;
+ }
+ /**法二**/
+.container{
+  text-align: center;
+}
+.container div{
+   display: inline;
+}
+/**法3**/
+.box{
+  float:left;
+  position: relative;
+  left:50%;
+}
+.box div{
+  position: relative;
+  left:-50%;
+}
+</style>
+</head>
+<body >
+<!-------------------方法一：利用table告知浏览器当前元素采用最小宽度，而不是全屏-->
+<!-- <table>
+  <tbody>
+    <tr>
+       <td>
+          <div>在实际工作中我们会遇到需要为“不定宽度的块状元素”设置居中，比如网页上的分页导航，因</div>
+       </td>
+    </tr>
+  </tbody>
+</table> -->
+<!---------------法三：将块级元素变为行内元素---------------->
+<!-- <div class="container">
+  <div>在实际工作中我们会遇到需要为“不定宽度的块状元素”设置居中，比如网页上的分页导航，因</div>
+</div> -->
+  <div class="box">
+    <div>在实际工作中我们会遇到需要为“不定宽度的块状元素”设置居中，比如网页上的分页导航，因</div>
+  </div>
+</body>
+</html>
